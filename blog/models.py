@@ -43,5 +43,11 @@ class Post(models.Model):
 
     author = models.ForeignKey(User)
 
+    views = models.PositiveIntegerField(default=0)
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
+
     class Meta:
         ordering = ['-created_time']
