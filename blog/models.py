@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import markdown
+from django.utils.html import strip_tags
 
 from django.urls import reverse
 from django.utils.six import python_2_unicode_compatible
@@ -32,11 +34,22 @@ class Post(models.Model):
     title = models.CharField(max_length=70)
 
     body = models.TextField()
+    # 自动生成文章摘要
+    excerpt = models.CharField(max_length=200, blank=True)
 
     created_time = models.DateTimeField()
     modified_time = models.DateTimeField()
 
     excerpt = models.CharField(max_length=200, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.excerpt:
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ])
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
+        super(Post, self).save(*args, **kwargs)
 
     category = models.ForeignKey(Category)
     tags = models.ManyToManyField(Tag, blank=True)
