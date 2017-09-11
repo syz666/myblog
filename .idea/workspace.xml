@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc75133d-59b7-4439-97c1-84db115acd07" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/models.py" afterPath="$PROJECT_DIR$/blog/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/blog/index.html" afterPath="$PROJECT_DIR$/templates/blog/index.html" />
     </list>
@@ -170,7 +171,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="67" />
     <option name="y" value="498" />
     <option name="width" value="1934" />
@@ -254,7 +255,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="498" width="1934" height="987" extended-state="0" />
+    <frame x="67" y="498" width="1934" height="987" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17991632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
