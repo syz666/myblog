@@ -6,6 +6,8 @@ from comments.forms import CommentForm
 from .models import Post, Category
 from django.views.generic import ListView, DetailView
 
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # Create your views here.
 """ #常规写法
@@ -21,6 +23,8 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
+
+    paginate_by = 5
 
 """
 def detail(request, pk):
