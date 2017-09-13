@@ -24,7 +24,7 @@ class IndexView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
 
-    paginate_by = 5
+    paginate_by = 3
 
 """
 def detail(request, pk):
@@ -100,6 +100,16 @@ class ArchivesView(ListView):
         return super(ArchivesView, self).get_queryset().filter(created_time__year=year,
                                                                created_time__month=month
                                                                )
+
+# Tag 视图
+class TagView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
+        return super(TagView, self).get_queryset().filter(tags=tag)
 
 """ 常规写法
 def category(request, pk):
