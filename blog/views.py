@@ -2,10 +2,12 @@ import markdown
 
 from django.shortcuts import render, get_object_or_404
 
+from markdown.extensions.toc import TocExtension
+
 from comments.forms import CommentForm
 from .models import Post, Category
 from django.views.generic import ListView, DetailView
-
+from django.db.models import Q
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -126,6 +128,18 @@ class CategoryView(ListView):
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
         return super(CategoryView, self).get_queryset().filter(category=cate)
+
+def search(request):
+    q = request.GET.get('q')
+    error_msg = ''
+    if not q:
+        error_msg = '请输入关键词'
+        return render(request, 'blog/index.html', {'error_msg': error_msg})
+
+    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+    return render(request, 'blog/index.html', {'error_msg': error_msg,
+                                               'post_list': post_list})
+
 
 
 
